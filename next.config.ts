@@ -13,9 +13,10 @@ const nextConfig: NextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-eval' 'unsafe-inline'",
+              // jsdelivr required by @monaco-editor/react to load the editor bundle
+              "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://cdn.jsdelivr.net",
               "style-src 'self' 'unsafe-inline'",
-              "connect-src 'self' https://ce.judge0.com",
+              "connect-src 'self' https://ce.judge0.com https://cdn.jsdelivr.net",
               "worker-src blob:",
             ].join('; '),
           },

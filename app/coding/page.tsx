@@ -1,5 +1,5 @@
 'use client';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { Header } from '@/components/Header/Header';
 import { FilterBar } from '@/components/FilterBar/FilterBar';
 import { CodingChallenge } from '@/components/CodingChallenge/CodingChallenge';
@@ -8,7 +8,7 @@ import { useProgress } from '@/hooks/useProgress';
 import { useTheme } from '@/hooks/useTheme';
 import { codingQuestions } from '@/data/codingQuestions';
 import { weightedShuffle } from '@/utils/shuffle';
-import type { Language, Difficulty, Category } from '@/types';
+import type { Language, Difficulty, Category, CodingQuestion } from '@/types';
 import styles from './page.module.css';
 
 export default function CodingPage() {
@@ -19,16 +19,21 @@ export default function CodingPage() {
   const [catFilter, setCatFilter] = useState<Category | 'all'>('all');
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const filtered = useMemo(() => {
-    const base = codingQuestions.filter(q => {
-      if (langFilter !== 'all' && q.language !== langFilter) return false;
-      if (diffFilter !== 'all' && q.difficulty !== diffFilter) return false;
-      if (catFilter !== 'all' && q.category !== catFilter) return false;
-      return true;
-    });
-    return weightedShuffle(base, progress);
+  // Compute the filtered base list (deterministic — safe for SSR)
+  const filteredBase = useMemo(() => codingQuestions.filter(q => {
+    if (langFilter !== 'all' && q.language !== langFilter) return false;
+    if (diffFilter !== 'all' && q.difficulty !== diffFilter) return false;
+    if (catFilter !== 'all' && q.category !== catFilter) return false;
+    return true;
+  }), [langFilter, diffFilter, catFilter]);
+
+  // Apply the shuffle only on the client to avoid SSR/client Math.random() mismatch
+  const [filtered, setFiltered] = useState<CodingQuestion[]>(filteredBase);
+  useEffect(() => {
+    setFiltered(weightedShuffle(filteredBase, progress));
+    setCurrentIndex(0);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [langFilter, diffFilter, catFilter]);
+  }, [filteredBase]);
 
   const availableCategories = useMemo(
     () => [...new Set(codingQuestions.map(q => q.category))].sort(),
