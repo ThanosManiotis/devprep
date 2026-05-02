@@ -1,0 +1,15 @@
+.toggle {
+  background: var(--bg-code);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.toggle:hover {
+  background: var(--accent-light);
+  border-color: var(--accent);
+}

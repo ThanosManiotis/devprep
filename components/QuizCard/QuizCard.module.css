@@ -1,0 +1,152 @@
+.card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 800px;
+  width: 100%;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.badge {
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.easy { background: var(--success-light); color: var(--success); }
+.medium { background: #fff3cd; color: #856404; }
+.hard { background: var(--error-light); color: var(--error); }
+
+.category,
+.lang {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  padding: 0.2rem 0.5rem;
+  background: var(--bg-code);
+  border-radius: var(--radius);
+  text-transform: capitalize;
+}
+
+.title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.codeWrapper {
+  width: 100%;
+}
+
+.options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+@media (max-width: 500px) {
+  .options {
+    grid-template-columns: 1fr;
+  }
+}
+
+.option {
+  padding: 0.75rem 1rem;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  text-align: left;
+  font-size: 0.875rem;
+  font-family: 'Fira Code', 'Consolas', monospace;
+  transition: border-color 0.15s, background 0.15s;
+  word-break: break-word;
+}
+
+.option:hover:not(:disabled) {
+  border-color: var(--accent);
+  background: var(--accent-light);
+}
+
+.option:disabled {
+  cursor: default;
+}
+
+.option.correct {
+  border-color: var(--success);
+  background: var(--success-light);
+  color: var(--success);
+}
+
+.option.wrong {
+  border-color: var(--error);
+  background: var(--error-light);
+  color: var(--error);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.hintBtn {
+  padding: 0.45rem 1rem;
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background 0.15s;
+  align-self: flex-start;
+}
+
+.hintBtn:hover:not(:disabled) {
+  background: var(--accent-light);
+}
+
+.hintBtn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.hint {
+  padding: 0.75rem;
+  background: var(--accent-light);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+}
+
+.nextBtn {
+  padding: 0.65rem 1.5rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  align-self: flex-end;
+  transition: opacity 0.15s;
+}
+
+.nextBtn:hover {
+  opacity: 0.9;
+}

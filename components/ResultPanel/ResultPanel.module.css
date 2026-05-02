@@ -1,0 +1,34 @@
+.panel {
+  padding: 1rem;
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.correct {
+  background: var(--success-light);
+  border: 1px solid var(--success);
+  color: var(--success);
+}
+
+.wrong {
+  background: var(--error-light);
+  border: 1px solid var(--error);
+  color: var(--error);
+}
+
+.verdict {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.answer {
+  color: var(--text-primary);
+}
+
+.explanation {
+  color: var(--text-primary);
+  line-height: 1.5;
+}
