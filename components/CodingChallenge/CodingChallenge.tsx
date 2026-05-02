@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
+import { loader } from '@monaco-editor/react';
 import type { CodingQuestion } from '@/types';
 import { useCodeExecution } from '@/hooks/useCodeExecution';
 import { useIsMobile } from '@/hooks/useIsMobile';
@@ -8,6 +9,14 @@ import { MobileEditor } from '@/components/MobileEditor/MobileEditor';
 import { HintPanel } from '@/components/HintPanel/HintPanel';
 import { EditorErrorBoundary } from '@/components/EditorErrorBoundary/EditorErrorBoundary';
 import styles from './CodingChallenge.module.css';
+
+// Use the locally installed monaco-editor package instead of the jsdelivr CDN,
+// so the Content Security Policy does not need to allow external script sources.
+if (typeof window !== 'undefined') {
+  import('monaco-editor').then(monaco => {
+    loader.config({ monaco });
+  });
+}
 
 const MonacoEditor = dynamic(
   () => import('@monaco-editor/react').then(mod => mod.default),
