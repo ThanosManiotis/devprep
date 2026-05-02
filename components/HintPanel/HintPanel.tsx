@@ -1,6 +1,5 @@
 'use client';
 import { useState } from 'react';
-import { Button } from '@/design-system';
 import styles from './HintPanel.module.css';
 
 interface HintPanelProps {
@@ -11,7 +10,9 @@ export function HintPanel({ hints }: HintPanelProps) {
   const [revealedCount, setRevealedCount] = useState(0);
 
   const revealNext = () => {
-    if (revealedCount < hints.length) setRevealedCount(prev => prev + 1);
+    if (revealedCount < hints.length) {
+      setRevealedCount(prev => prev + 1);
+    }
   };
 
   return (
@@ -26,9 +27,8 @@ export function HintPanel({ hints }: HintPanelProps) {
           ))}
         </div>
       )}
-      <Button
-        variant="ghost"
-        size="sm"
+      <button
+        className={styles.btn}
         onClick={revealNext}
         disabled={revealedCount >= hints.length}
       >
@@ -37,7 +37,7 @@ export function HintPanel({ hints }: HintPanelProps) {
           : revealedCount >= hints.length
           ? 'No more hints'
           : `Show Next Hint (${revealedCount + 1} of ${hints.length})`}
-      </Button>
+      </button>
     </div>
   );
 }

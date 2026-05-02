@@ -3,28 +3,21 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--ds-space-4);
-  padding: var(--ds-space-8);
-  background: var(--ds-danger-50);
-  border: 1px solid var(--ds-danger-200);
-  border-radius: var(--ds-radius-md);
-  color: var(--ds-danger-600);
+  gap: 1rem;
+  padding: 2rem;
+  background: var(--error-light);
+  border: 1px solid var(--error);
+  border-radius: var(--radius);
+  color: var(--error);
   min-height: 200px;
-  font-size: var(--ds-text-sm);
 }
 
 .fallback button {
-  padding: var(--ds-space-2) var(--ds-space-5);
-  background: var(--ds-danger-600);
+  padding: 0.5rem 1.25rem;
+  background: var(--error);
   color: #fff;
   border: none;
-  border-radius: var(--ds-radius-md);
+  border-radius: var(--radius);
   cursor: pointer;
-  font-size: var(--ds-text-sm);
-  font-family: var(--ds-font-sans);
-  transition: background var(--ds-transition-fast);
-}
-
-.fallback button:hover {
-  background: var(--ds-danger-800);
+  font-size: 0.9rem;
 }

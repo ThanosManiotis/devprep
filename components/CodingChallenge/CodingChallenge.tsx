@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import type { CodingQuestion } from '@/types';
-import { Button, Badge, Card } from '@/design-system';
 import { useCodeExecution } from '@/hooks/useCodeExecution';
 import { useIsMobile } from '@/hooks/useIsMobile';
 import { MobileEditor } from '@/components/MobileEditor/MobileEditor';
@@ -21,18 +20,13 @@ interface CodingChallengeProps {
   onSolved: () => void;
 }
 
-const DIFFICULTY_VARIANT = {
-  easy: 'success',
-  medium: 'warning',
-  hard: 'danger',
-} as const;
-
 export function CodingChallenge({ question, theme, onSolved }: CodingChallengeProps) {
   const [code, setCode] = useState(question.starterCode);
   const [showSolution, setShowSolution] = useState(false);
   const { output, error, isRunning, hasRun, runCode, reset } = useCodeExecution();
   const isMobile = useIsMobile();
 
+  // Reset state when question changes
   useEffect(() => {
     setCode(question.starterCode);
     setShowSolution(false);
@@ -45,17 +39,19 @@ export function CodingChallenge({ question, theme, onSolved }: CodingChallengePr
     onSolved();
   };
 
+  const handleEditorChange = (value: string | undefined) => {
+    setCode(value ?? '');
+  };
+
   return (
-    <Card variant="raised" padding="md" className={styles.container}>
+    <div className={styles.container}>
       <div className={styles.problem}>
         <div className={styles.meta}>
-          <Badge variant={DIFFICULTY_VARIANT[question.difficulty]}>
+          <span className={`${styles.badge} ${styles[question.difficulty]}`}>
             {question.difficulty}
-          </Badge>
-          <Badge variant="default">{question.category.replace(/-/g, ' ')}</Badge>
-          <Badge variant="accent">
-            {question.language === 'csharp' ? 'C#' : 'JavaScript'}
-          </Badge>
+          </span>
+          <span className={styles.category}>{question.category.replace(/-/g, ' ')}</span>
+          <span className={styles.lang}>{question.language === 'csharp' ? 'C#' : 'JavaScript'}</span>
         </div>
         <h2 className={styles.title}>{question.title}</h2>
         <p className={styles.description}>{question.description}</p>
@@ -86,7 +82,7 @@ export function CodingChallenge({ question, theme, onSolved }: CodingChallengePr
               height="320px"
               language={question.language === 'csharp' ? 'csharp' : 'javascript'}
               value={code}
-              onChange={v => setCode(v ?? '')}
+              onChange={handleEditorChange}
               theme={theme === 'dark' ? 'vs-dark' : 'light'}
               options={{
                 fontSize: 14,
@@ -101,17 +97,21 @@ export function CodingChallenge({ question, theme, onSolved }: CodingChallengePr
       </div>
 
       <div className={styles.controls}>
-        <Button variant="primary" size="md" loading={isRunning} onClick={handleRun}>
-          {isRunning ? 'Running…' : '▶ Run Code'}
-        </Button>
+        <button
+          className={styles.runBtn}
+          onClick={handleRun}
+          disabled={isRunning}
+        >
+          {isRunning ? 'Running...' : '▶ Run Code'}
+        </button>
+
         {hasRun && (
-          <Button
-            variant="secondary"
-            size="md"
+          <button
+            className={styles.solutionBtn}
             onClick={() => setShowSolution(prev => !prev)}
           >
             {showSolution ? 'Hide Solution' : 'Show Solution'}
-          </Button>
+          </button>
         )}
       </div>
 
@@ -119,9 +119,11 @@ export function CodingChallenge({ question, theme, onSolved }: CodingChallengePr
         <div className={`${styles.output} ${error ? styles.outputError : styles.outputSuccess}`}>
           <span className={styles.outputLabel}>Output:</span>
           {isRunning ? (
-            <span className={styles.running}>Running…</span>
+            <span className={styles.running}>Running...</span>
+          ) : error ? (
+            <pre className={styles.pre}>{error}</pre>
           ) : (
-            <pre className={styles.pre}>{error || output}</pre>
+            <pre className={styles.pre}>{output}</pre>
           )}
         </div>
       )}
@@ -137,6 +139,6 @@ export function CodingChallenge({ question, theme, onSolved }: CodingChallengePr
           <p className={styles.solutionExplanation}>{question.explanation}</p>
         </div>
       )}
-    </Card>
+    </div>
   );
 }

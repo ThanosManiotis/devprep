@@ -11,18 +11,18 @@ interface CodeDisplayProps {
 
 export function CodeDisplay({ code, language }: CodeDisplayProps) {
   const { theme } = useTheme();
+  const syntaxLang = language === 'csharp' ? 'csharp' : 'javascript';
 
   return (
     <div className={styles.wrapper}>
       <SyntaxHighlighter
-        language={language === 'csharp' ? 'csharp' : 'javascript'}
+        language={syntaxLang}
         style={theme === 'dark' ? vscDarkPlus : prism}
         customStyle={{
           margin: 0,
-          borderRadius: 'var(--ds-radius-md)',
-          fontSize: 'var(--ds-text-sm)',
-          background: 'var(--ds-bg-subtle)',
-          lineHeight: 'var(--ds-leading-normal)',
+          borderRadius: 'var(--radius)',
+          fontSize: '0.875rem',
+          background: 'var(--bg-code)',
         }}
       >
         {code}

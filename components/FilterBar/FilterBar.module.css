@@ -1,27 +1,26 @@
 .filterBar {
   display: flex;
-  gap: var(--ds-space-3);
-  padding: var(--ds-space-4) var(--ds-space-6);
-  background: var(--ds-bg-surface);
-  border-bottom: 1px solid var(--ds-border);
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
   flex-wrap: wrap;
 }
 
 .select {
-  padding: var(--ds-space-2) var(--ds-space-3);
-  background: var(--ds-bg-page);
-  color: var(--ds-text-primary);
-  border: 1px solid var(--ds-border);
-  border-radius: var(--ds-radius-md);
-  font-size: var(--ds-text-sm);
-  font-family: var(--ds-font-sans);
+  padding: 0.4rem 0.75rem;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.875rem;
   cursor: pointer;
-  min-width: 150px;
-  transition: border-color var(--ds-transition-fast);
+  min-width: 140px;
+  transition: border-color 0.15s;
 }
 
 .select:hover,
 .select:focus {
-  border-color: var(--ds-accent);
+  border-color: var(--accent);
   outline: none;
 }

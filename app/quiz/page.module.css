@@ -9,12 +9,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: var(--ds-space-8) var(--ds-space-6);
-  gap: var(--ds-space-6);
+  padding: 2rem 1.5rem;
+  gap: 1.5rem;
 }
 
 .empty {
-  color: var(--ds-text-secondary);
-  font-size: var(--ds-text-base);
-  margin-top: var(--ds-space-12);
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin-top: 3rem;
 }

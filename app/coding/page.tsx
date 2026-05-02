@@ -4,7 +4,6 @@ import { Header } from '@/components/Header/Header';
 import { FilterBar } from '@/components/FilterBar/FilterBar';
 import { CodingChallenge } from '@/components/CodingChallenge/CodingChallenge';
 import { ProgressBadge } from '@/components/ProgressBadge/ProgressBadge';
-import { Button } from '@/design-system';
 import { useProgress } from '@/hooks/useProgress';
 import { useTheme } from '@/hooks/useTheme';
 import { codingQuestions } from '@/data/codingQuestions';
@@ -57,25 +56,23 @@ export default function CodingPage() {
         ) : (
           <>
             <div className={styles.nav}>
-              <Button
-                variant="secondary"
-                size="sm"
+              <button
+                className={styles.navBtn}
                 onClick={() => setCurrentIndex(prev => Math.max(0, prev - 1))}
                 disabled={safeIndex === 0}
               >
                 ← Prev
-              </Button>
+              </button>
               <span className={styles.navCount}>
                 {safeIndex + 1} / {filtered.length}
               </span>
-              <Button
-                variant="secondary"
-                size="sm"
+              <button
+                className={styles.navBtn}
                 onClick={() => setCurrentIndex(prev => Math.min(filtered.length - 1, prev + 1))}
                 disabled={safeIndex >= filtered.length - 1}
               >
                 Next →
-              </Button>
+              </button>
             </div>
             <CodingChallenge
               key={current.id}
