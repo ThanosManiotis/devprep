@@ -1,20 +1,11 @@
-.editor {
+.wrapper {
   width: 100%;
-  min-height: 280px;
-  padding: 1rem;
-  background: var(--bg-code);
-  color: var(--text-primary);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  font-family: 'Fira Code', 'Consolas', 'Monaco', monospace;
-  font-size: 0.875rem;
-  line-height: 1.6;
-  resize: vertical;
-  box-sizing: border-box;
-  outline: none;
-  transition: border-color 0.15s;
 }
 
-.editor:focus {
-  border-color: var(--accent);
+/* Override the DS textarea font to monospace for code */
+.editor {
+  font-family: var(--ds-font-mono) !important;
+  font-size: var(--ds-text-sm) !important;
+  line-height: 1.6 !important;
+  resize: vertical;
 }

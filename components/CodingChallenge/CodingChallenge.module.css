@@ -1,99 +1,74 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
   max-width: 900px;
   width: 100%;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-5);
 }
 
 .problem {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: var(--ds-space-3);
 }
 
 .meta {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--ds-space-2);
   flex-wrap: wrap;
 }
 
-.badge {
-  padding: 0.2rem 0.6rem;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: capitalize;
-}
-
-.easy { background: var(--success-light); color: var(--success); }
-.medium { background: #fff3cd; color: #856404; }
-.hard { background: var(--error-light); color: var(--error); }
-
-.category,
-.lang {
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-  padding: 0.2rem 0.5rem;
-  background: var(--bg-code);
-  border-radius: var(--radius);
-  text-transform: capitalize;
-}
-
 .title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--text-primary);
+  font-size: var(--ds-text-lg);
+  font-weight: var(--ds-weight-semi);
+  color: var(--ds-text-primary);
   margin: 0;
+  line-height: var(--ds-leading-tight);
 }
 
 .description {
-  font-size: 0.9rem;
-  color: var(--text-primary);
-  line-height: 1.6;
+  font-size: var(--ds-text-base);
+  color: var(--ds-text-primary);
+  line-height: var(--ds-leading-normal);
   margin: 0;
 }
 
 .examples {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--ds-space-2);
 }
 
 .examplesTitle {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--text-secondary);
+  font-size: var(--ds-text-sm);
+  font-weight: var(--ds-weight-semi);
+  color: var(--ds-text-secondary);
   margin: 0;
 }
 
 .example {
-  background: var(--bg-code);
-  padding: 0.75rem;
-  border-radius: var(--radius);
-  font-size: 0.85rem;
-  color: var(--text-primary);
+  background: var(--ds-bg-subtle);
+  padding: var(--ds-space-3);
+  border-radius: var(--ds-radius-md);
+  font-size: var(--ds-text-sm);
+  color: var(--ds-text-primary);
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: var(--ds-space-1);
 }
 
 .example code {
-  font-family: 'Fira Code', 'Consolas', monospace;
-  background: var(--bg-secondary);
+  font-family: var(--ds-font-mono);
+  background: var(--ds-bg-muted);
   padding: 0.1rem 0.3rem;
-  border-radius: 3px;
+  border-radius: var(--ds-radius-sm);
 }
 
 .editor {
-  border-radius: var(--radius);
+  border-radius: var(--ds-radius-md);
   overflow: hidden;
-  border: 1px solid var(--border);
+  border: 1px solid var(--ds-border);
 }
 
 .editorLoading {
@@ -101,128 +76,94 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--bg-code);
-  color: var(--text-secondary);
-  font-size: 0.875rem;
+  background: var(--ds-bg-subtle);
+  color: var(--ds-text-secondary);
+  font-size: var(--ds-text-sm);
 }
 
 .controls {
   display: flex;
-  gap: 0.75rem;
+  gap: var(--ds-space-3);
   flex-wrap: wrap;
 }
 
-.runBtn {
-  padding: 0.6rem 1.5rem;
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  border-radius: var(--radius);
-  cursor: pointer;
-  font-size: 0.95rem;
-  font-weight: 600;
-  transition: opacity 0.15s;
-}
-
-.runBtn:hover:not(:disabled) {
-  opacity: 0.9;
-}
-
-.runBtn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.solutionBtn {
-  padding: 0.6rem 1.25rem;
-  background: transparent;
-  color: var(--text-secondary);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  cursor: pointer;
-  font-size: 0.875rem;
-  font-weight: 500;
-  transition: border-color 0.15s, color 0.15s;
-}
-
-.solutionBtn:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
 .output {
-  border-radius: var(--radius);
-  padding: 1rem;
+  border-radius: var(--ds-radius-md);
+  padding: var(--ds-space-4);
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--ds-space-2);
 }
 
 .outputSuccess {
-  background: var(--bg-code);
-  border: 1px solid var(--border);
+  background: var(--ds-bg-subtle);
+  border: 1px solid var(--ds-border);
 }
 
 .outputError {
-  background: var(--error-light);
-  border: 1px solid var(--error);
+  background: var(--ds-danger-50);
+  border: 1px solid var(--ds-danger-200);
 }
 
 .outputLabel {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--text-secondary);
+  font-size: var(--ds-text-xs);
+  font-weight: var(--ds-weight-semi);
+  color: var(--ds-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .running {
-  color: var(--accent);
-  font-size: 0.875rem;
+  color: var(--ds-accent);
+  font-size: var(--ds-text-sm);
 }
 
 .pre {
   margin: 0;
-  font-family: 'Fira Code', 'Consolas', monospace;
-  font-size: 0.875rem;
-  color: var(--text-primary);
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-text-sm);
+  color: var(--ds-text-primary);
   white-space: pre-wrap;
   word-break: break-word;
+  line-height: var(--ds-leading-normal);
 }
 
 .hints {
-  border-top: 1px solid var(--border);
-  padding-top: 1rem;
+  border-top: 1px solid var(--ds-border);
+  padding-top: var(--ds-space-4);
 }
 
 .solution {
-  border-top: 1px solid var(--border);
-  padding-top: 1rem;
+  border-top: 1px solid var(--ds-border);
+  padding-top: var(--ds-space-4);
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: var(--ds-space-3);
 }
 
 .solutionTitle {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--text-primary);
+  font-size: var(--ds-text-base);
+  font-weight: var(--ds-weight-semi);
+  color: var(--ds-text-primary);
   margin: 0;
 }
 
 .solutionCode {
-  background: var(--bg-code);
-  padding: 1rem;
-  border-radius: var(--radius);
-  font-family: 'Fira Code', 'Consolas', monospace;
-  font-size: 0.875rem;
-  color: var(--text-primary);
+  background: var(--ds-bg-subtle);
+  padding: var(--ds-space-4);
+  border-radius: var(--ds-radius-md);
+  font-family: var(--ds-font-mono);
+  font-size: var(--ds-text-sm);
+  color: var(--ds-text-primary);
   margin: 0;
   white-space: pre-wrap;
   overflow-x: auto;
+  border: 1px solid var(--ds-border);
 }
 
 .solutionExplanation {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
+  font-size: var(--ds-text-sm);
+  color: var(--ds-text-secondary);
+  line-height: var(--ds-leading-normal);
   margin: 0;
 }

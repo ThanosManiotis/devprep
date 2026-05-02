@@ -1,0 +1,128 @@
+.card {
+  border-radius: var(--ds-radius-lg);
+  transition: box-shadow var(--ds-transition-base), transform var(--ds-transition-fast);
+}
+
+/* ─── Padding ─── */
+.p-sm { padding: var(--ds-space-3) var(--ds-space-4); }
+.p-md { padding: var(--ds-space-4) var(--ds-space-5); }
+.p-lg { padding: var(--ds-space-6) var(--ds-space-8); }
+
+/* ─── Variants ─── */
+.raised {
+  background: var(--ds-bg-surface);
+  border: 1px solid var(--ds-border);
+  box-shadow: var(--ds-shadow-xs);
+}
+
+.flat {
+  background: var(--ds-bg-subtle);
+  border: 1px solid transparent;
+}
+
+.metric {
+  background: var(--ds-bg-subtle);
+  border: 1px solid transparent;
+  border-radius: var(--ds-radius-md);
+}
+
+.featured {
+  background: var(--ds-bg-surface);
+  border: 2px solid var(--ds-accent);
+  box-shadow: var(--ds-shadow-sm);
+}
+
+/* ─── Clickable ─── */
+.clickable {
+  cursor: pointer;
+  outline: none;
+}
+.clickable:hover {
+  box-shadow: var(--ds-shadow-md);
+  transform: translateY(-1px);
+}
+.clickable:active {
+  transform: translateY(0);
+  box-shadow: var(--ds-shadow-xs);
+}
+.clickable:focus-visible {
+  box-shadow: 0 0 0 3px var(--ds-accent-subtle), var(--ds-shadow-sm);
+}
+
+/* ─── Header ─── */
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--ds-space-4);
+  margin-bottom: var(--ds-space-4);
+}
+
+.headerText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-1);
+}
+
+.headerAction {
+  flex-shrink: 0;
+}
+
+.title {
+  margin: 0;
+  font-size: var(--ds-text-base);
+  font-weight: var(--ds-weight-medium);
+  color: var(--ds-text-primary);
+  line-height: var(--ds-leading-tight);
+}
+
+.subtitle {
+  margin: 0;
+  font-size: var(--ds-text-sm);
+  color: var(--ds-text-secondary);
+}
+
+/* ─── Divider ─── */
+.divider {
+  border: none;
+  border-top: 1px solid var(--ds-border);
+  margin: var(--ds-space-4) 0;
+}
+
+/* ─── Metric ─── */
+.metric {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-1);
+}
+
+.metricLabel {
+  margin: 0;
+  font-size: var(--ds-text-sm);
+  color: var(--ds-text-secondary);
+}
+
+.metricRow {
+  display: flex;
+  align-items: baseline;
+  gap: var(--ds-space-2);
+}
+
+.metricValue {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: var(--ds-weight-medium);
+  color: var(--ds-text-primary);
+  line-height: 1;
+}
+
+.trend {
+  font-size: var(--ds-text-xs);
+  font-weight: var(--ds-weight-medium);
+}
+
+.trendUp   { color: var(--ds-success-600); }
+.trendDown { color: var(--ds-danger-600); }
+
+[data-theme="dark"] .trendUp   { color: var(--ds-success-200); }
+[data-theme="dark"] .trendDown { color: var(--ds-danger-200); }

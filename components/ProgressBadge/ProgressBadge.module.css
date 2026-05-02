@@ -1,25 +1,25 @@
 .container {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
-  padding: 0.75rem 1.5rem;
+  gap: var(--ds-space-2);
+  padding: var(--ds-space-3) var(--ds-space-6);
 }
 
 .dot {
   width: 10px;
   height: 10px;
-  border-radius: 50%;
-  background: var(--border);
+  border-radius: var(--ds-radius-full);
+  background: var(--ds-border-strong);
   display: inline-block;
-  transition: background 0.2s, transform 0.15s;
+  transition: background var(--ds-transition-base), transform var(--ds-transition-fast);
 }
 
 .dot.solved {
-  background: var(--success);
+  background: var(--ds-success-600);
 }
 
 .dot.current {
   transform: scale(1.4);
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--ds-accent);
   outline-offset: 1px;
 }

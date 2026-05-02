@@ -1,0 +1,138 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ds-space-2);
+  font-family: var(--ds-font-sans);
+  font-weight: var(--ds-weight-medium);
+  line-height: 1;
+  border: 1px solid transparent;
+  border-radius: var(--ds-radius-md);
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background var(--ds-transition-fast),
+    color var(--ds-transition-fast),
+    border-color var(--ds-transition-fast),
+    box-shadow var(--ds-transition-fast),
+    transform var(--ds-transition-fast);
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* ─── Sizes ─── */
+.sm {
+  height: 32px;
+  padding: 0 var(--ds-space-3);
+  font-size: var(--ds-text-sm);
+  border-radius: var(--ds-radius-sm);
+}
+
+.md {
+  height: 40px;
+  padding: 0 var(--ds-space-5);
+  font-size: var(--ds-text-sm);
+}
+
+.lg {
+  height: 48px;
+  padding: 0 var(--ds-space-6);
+  font-size: var(--ds-text-base);
+  border-radius: var(--ds-radius-lg);
+}
+
+/* ─── Variants ─── */
+.primary {
+  background: var(--ds-accent);
+  color: var(--ds-text-inverse);
+  border-color: var(--ds-accent);
+}
+.primary:hover:not(:disabled) {
+  background: var(--ds-accent-hover);
+  border-color: var(--ds-accent-hover);
+  box-shadow: var(--ds-shadow-sm);
+}
+
+.secondary {
+  background: var(--ds-bg-surface);
+  color: var(--ds-text-primary);
+  border-color: var(--ds-border-strong);
+}
+.secondary:hover:not(:disabled) {
+  background: var(--ds-bg-subtle);
+  border-color: var(--ds-border-strong);
+  box-shadow: var(--ds-shadow-xs);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--ds-text-secondary);
+  border-color: transparent;
+}
+.ghost:hover:not(:disabled) {
+  background: var(--ds-bg-subtle);
+  color: var(--ds-text-primary);
+}
+
+.danger {
+  background: var(--ds-danger-600);
+  color: #fff;
+  border-color: var(--ds-danger-600);
+}
+.danger:hover:not(:disabled) {
+  background: var(--ds-danger-800);
+  border-color: var(--ds-danger-800);
+  box-shadow: var(--ds-shadow-sm);
+}
+
+/* ─── Full width ─── */
+.fullWidth {
+  width: 100%;
+}
+
+/* ─── Loading state ─── */
+.loading {
+  cursor: wait;
+  opacity: 0.75;
+}
+
+.spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ─── Icon ─── */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+}

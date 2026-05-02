@@ -1,4 +1,5 @@
 'use client';
+import { Textarea } from '@/design-system';
 import styles from './MobileEditor.module.css';
 
 interface MobileEditorProps {
@@ -9,16 +10,20 @@ interface MobileEditorProps {
 
 export function MobileEditor({ value, onChange, language }: MobileEditorProps) {
   return (
-    <textarea
-      className={styles.editor}
-      value={value}
-      onChange={e => onChange(e.target.value)}
-      spellCheck={false}
-      autoCapitalize="none"
-      autoComplete="off"
-      autoCorrect="off"
-      placeholder={`Write your ${language === 'csharp' ? 'C#' : 'JavaScript'} here...`}
-      aria-label="Code editor"
-    />
+    <div className={styles.wrapper}>
+      <Textarea
+        value={value}
+        onChange={e => onChange(e.target.value)}
+        className={styles.editor}
+        spellCheck={false}
+        autoCapitalize="none"
+        autoComplete="off"
+        autoCorrect="off"
+        placeholder={`Write your ${language === 'csharp' ? 'C#' : 'JavaScript'} here…`}
+        aria-label="Code editor"
+        rows={14}
+        fullWidth
+      />
+    </div>
   );
 }

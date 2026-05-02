@@ -1,15 +1,18 @@
 .toggle {
-  background: var(--bg-code);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 0.4rem 0.6rem;
+  background: var(--ds-bg-subtle);
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius-md);
+  padding: var(--ds-space-2);
   cursor: pointer;
   font-size: 1.1rem;
   line-height: 1;
-  transition: background 0.15s, border-color 0.15s;
+  transition: background var(--ds-transition-fast), border-color var(--ds-transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .toggle:hover {
-  background: var(--accent-light);
-  border-color: var(--accent);
+  background: var(--ds-accent-subtle);
+  border-color: var(--ds-accent);
 }

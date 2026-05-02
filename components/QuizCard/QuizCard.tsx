@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import type { OutputQuestion } from '@/types';
+import { Button, Badge, Card } from '@/design-system';
 import { CodeDisplay } from '@/components/CodeDisplay/CodeDisplay';
 import { ResultPanel } from '@/components/ResultPanel/ResultPanel';
 import styles from './QuizCard.module.css';
@@ -11,6 +12,12 @@ interface QuizCardProps {
   onNext: () => void;
 }
 
+const DIFFICULTY_VARIANT = {
+  easy: 'success',
+  medium: 'warning',
+  hard: 'danger',
+} as const;
+
 export function QuizCard({ question, onCorrect, onNext }: QuizCardProps) {
   const [selected, setSelected] = useState<string | null>(null);
   const [hintVisible, setHintVisible] = useState(false);
@@ -19,9 +26,7 @@ export function QuizCard({ question, onCorrect, onNext }: QuizCardProps) {
   const handleSelect = (option: string) => {
     if (answered) return;
     setSelected(option);
-    if (option === question.correctAnswer) {
-      onCorrect();
-    }
+    if (option === question.correctAnswer) onCorrect();
   };
 
   const handleNext = () => {
@@ -31,13 +36,15 @@ export function QuizCard({ question, onCorrect, onNext }: QuizCardProps) {
   };
 
   return (
-    <div className={styles.card}>
+    <Card variant="raised" padding="md" className={styles.card}>
       <div className={styles.meta}>
-        <span className={`${styles.badge} ${styles[question.difficulty]}`}>
+        <Badge variant={DIFFICULTY_VARIANT[question.difficulty]}>
           {question.difficulty}
-        </span>
-        <span className={styles.category}>{question.category.replace(/-/g, ' ')}</span>
-        <span className={styles.lang}>{question.language === 'csharp' ? 'C#' : 'JavaScript'}</span>
+        </Badge>
+        <Badge variant="default">{question.category.replace(/-/g, ' ')}</Badge>
+        <Badge variant="accent">
+          {question.language === 'csharp' ? 'C#' : 'JavaScript'}
+        </Badge>
       </div>
       <h2 className={styles.title}>{question.title}</h2>
 
@@ -68,13 +75,14 @@ export function QuizCard({ question, onCorrect, onNext }: QuizCardProps) {
       <div className={styles.actions}>
         {!answered && (
           <>
-            <button
-              className={styles.hintBtn}
+            <Button
+              variant="ghost"
+              size="sm"
               onClick={() => setHintVisible(true)}
               disabled={hintVisible}
             >
               {hintVisible ? 'Hint shown' : 'Show Hint'}
-            </button>
+            </Button>
             {hintVisible && (
               <div className={styles.hint}>{question.hint}</div>
             )}
@@ -89,11 +97,13 @@ export function QuizCard({ question, onCorrect, onNext }: QuizCardProps) {
             correctAnswer={question.correctAnswer}
             explanation={question.explanation}
           />
-          <button className={styles.nextBtn} onClick={handleNext}>
-            Next Question →
-          </button>
+          <div className={styles.nextRow}>
+            <Button variant="primary" size="md" onClick={handleNext}>
+              Next Question →
+            </Button>
+          </div>
         </>
       )}
-    </div>
+    </Card>
   );
 }

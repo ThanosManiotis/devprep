@@ -9,61 +9,61 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 3rem 1.5rem;
-  gap: 2.5rem;
+  padding: var(--ds-space-12) var(--ds-space-6);
+  gap: var(--ds-space-10);
 }
 
 .hero {
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: var(--ds-space-3);
 }
 
 .heading {
-  font-size: 2.5rem;
+  font-size: var(--ds-text-3xl);
   font-weight: 800;
-  color: var(--text-primary);
+  color: var(--ds-text-primary);
   letter-spacing: -1px;
+  line-height: var(--ds-leading-tight);
 }
 
 .subheading {
-  font-size: 1.1rem;
-  color: var(--text-secondary);
+  font-size: var(--ds-text-lg);
+  color: var(--ds-text-secondary);
   max-width: 480px;
+  line-height: var(--ds-leading-normal);
 }
 
 .modes {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
+  gap: var(--ds-space-6);
   width: 100%;
-  max-width: 700px;
+  max-width: 720px;
 }
 
 @media (max-width: 600px) {
-  .modes {
-    grid-template-columns: 1fr;
-  }
-  .heading {
-    font-size: 2rem;
-  }
+  .modes { grid-template-columns: 1fr; }
+  .heading { font-size: var(--ds-text-2xl); }
 }
 
 .modeCard {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  padding: 1.75rem;
-  background: var(--bg-secondary);
-  border: 2px solid var(--border);
-  border-radius: var(--radius);
+  gap: var(--ds-space-3);
+  padding: var(--ds-space-6);
+  background: var(--ds-bg-surface);
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius-lg);
   text-decoration: none;
-  transition: border-color 0.15s, transform 0.15s;
+  box-shadow: var(--ds-shadow-sm);
+  transition: box-shadow var(--ds-transition-base), transform var(--ds-transition-base), border-color var(--ds-transition-base);
 }
 
 .modeCard:hover {
-  border-color: var(--accent);
+  box-shadow: var(--ds-shadow-md);
+  border-color: var(--ds-accent);
   transform: translateY(-2px);
 }
 
@@ -72,26 +72,26 @@
 }
 
 .modeTitle {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--text-primary);
+  font-size: var(--ds-text-xl);
+  font-weight: var(--ds-weight-semi);
+  color: var(--ds-text-primary);
   margin: 0;
 }
 
 .modeDesc {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
+  font-size: var(--ds-text-base);
+  color: var(--ds-text-secondary);
+  line-height: var(--ds-leading-normal);
   margin: 0;
   flex: 1;
 }
 
 .modeCount {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--accent);
-  background: var(--accent-light);
-  padding: 0.2rem 0.6rem;
-  border-radius: 999px;
+  font-size: var(--ds-text-xs);
+  font-weight: var(--ds-weight-semi);
+  color: var(--ds-accent-text);
+  background: var(--ds-accent-subtle);
+  padding: var(--ds-space-1) var(--ds-space-3);
+  border-radius: var(--ds-radius-full);
   align-self: flex-start;
 }
